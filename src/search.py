@@ -25,5 +25,15 @@ PERGUNTA DO USUÁRIO:
 RESPONDA A "PERGUNTA DO USUÁRIO"
 """
 
+class _FakeSearchChain:
+    """Stub para desenvolvimento: simula uma chain LangChain com `.invoke()`."""
+
+    def invoke(self, question: str) -> str:
+        return (
+            "[FAKE] Com base no contexto simulado, a resposta seria algo como: "
+            f"processando a pergunta «{question.strip()[:80]}»."
+        )
+
+
 def search_prompt(question=None):
-    pass
+    return _FakeSearchChain()
