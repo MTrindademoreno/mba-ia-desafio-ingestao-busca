@@ -59,7 +59,7 @@ def get_vector_store() -> PGVector:
 
 def search_prompt(pergunta: str) -> str:
     """
-    Busca os K chunks mais relevantes para a pergunta e monta o prompt RAG.
+    Busca os K chunks mais relevantes para a pergunta e monta o prompt.
     Retorna o prompt pronto para ser enviado ao LLM.
     """
     store = get_vector_store()

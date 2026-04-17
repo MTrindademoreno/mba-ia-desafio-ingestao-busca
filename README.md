@@ -37,7 +37,6 @@ Preencha pelo menos:
 - `PDF_PATH` — caminho do PDF a indexar
 - `PG_VECTOR_COLLECTION_NAME` — **obrigatório** (nome lógico da collection no vector store; ex.: `meu_rag_collection`)
 
-Comentários no `.env` devem começar com `#`.
 
 ## 4. Ingestão
 
@@ -70,4 +69,4 @@ Se você **mudar de Google para OpenAI** (ou o contrário) ou **trocar o modelo 
 ## Problemas comuns
 
 - **Porta 5432 em uso** — libere a porta ou mude o mapeamento no Compose e o `DATABASE_URL`.
-- **Erro de dimensão de vetor** — use outro `PG_VECTOR_COLLECTION_NAME` adequado ao modelo atual e rode o ingest de novo (ver seção acima).
+- **Erro de dimensão de vetor** — use outro `PG_VECTOR_COLLECTION_NAME` adequado ao modelo atual e rode o ingest de novo .
