@@ -1,4 +1,4 @@
-# Desafio MBA — Engenharia de Software com IA (ingestão e busca)
+# Desafio MBA — Engenharia de Software com IA (ingestão e busca) (main)
 
 Pipeline : PDF → chunks → embeddings → **Postgres + pgvector**; perguntas no terminal com busca por similaridade e LLM (**Google Gemini** ou **OpenAI**, conforme chaves no `.env`).
 
