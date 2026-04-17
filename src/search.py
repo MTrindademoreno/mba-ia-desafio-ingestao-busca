@@ -4,7 +4,11 @@ from functools import lru_cache
 from dotenv import load_dotenv
 from langchain_postgres import PGVector
 
-from ingest import _connection_string_for_pgvector, _get_embedding_and_dim
+from ingest import (
+    _connection_string_for_pgvector,
+    _get_embedding_and_dim,
+    _pg_vector_collection_name,
+)
 
 load_dotenv()
 
@@ -43,7 +47,7 @@ def get_vector_store() -> PGVector:
         raise ValueError("DATABASE_URL não configurado no .env.")
     connection_url = _connection_string_for_pgvector(database_url)
     embedding, vector_size = _get_embedding_and_dim()
-    collection_name = os.getenv("PG_VECTOR_COLLECTION_NAME", "gpt5_collection")
+    collection_name = _pg_vector_collection_name()
     return PGVector(
         connection=connection_url,
         collection_name=collection_name,

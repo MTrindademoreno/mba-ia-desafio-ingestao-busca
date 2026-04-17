@@ -18,6 +18,16 @@ CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 150
 
 
+def _pg_vector_collection_name() -> str:
+    name = os.getenv("PG_VECTOR_COLLECTION_NAME", "").strip()
+    if not name:
+        raise ValueError(
+            "PG_VECTOR_COLLECTION_NAME é obrigatório no .env "
+            "(nome da collection no vector store)."
+        )
+    return name
+
+
 def _connection_string_for_pgvector(url: str) -> str:
     """Garante que a URL use o driver psycopg para langchain-postgres."""
     if not url:
@@ -106,7 +116,7 @@ def ingest_pdf():
     num_pages = len(pages_meta)
     print(f"PDF carregado: {num_pages} página(s) -> {len(chunks)} chunk(s).")
 
-    collection_name = os.getenv("PG_VECTOR_COLLECTION_NAME", "gpt5_collection")
+    collection_name = _pg_vector_collection_name()
 
     # 3) Embeddings + persistência no PGVector
     PGVector.from_documents(
